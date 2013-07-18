@@ -100,8 +100,9 @@
 	
 	if (pointDirection == PointDirectionUp) {
 		CGPathMoveToPoint(bubblePath, NULL, targetPoint.x+sidePadding, targetPoint.y);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+pointerSize, targetPoint.y+pointerSize);
-		
+        //YK: modified for variable pointer height
+		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+pointerSize, targetPoint.y+pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+12, targetPoint.y+pointerSize);
 		CGPathAddArcToPoint(bubblePath, NULL,
 							bubbleRect.origin.x+bubbleRect.size.width, bubbleRect.origin.y,
 							bubbleRect.origin.x+bubbleRect.size.width, bubbleRect.origin.y+cornerRadius,
@@ -118,12 +119,16 @@
 							bubbleRect.origin.x, bubbleRect.origin.y,
 							bubbleRect.origin.x+cornerRadius, bubbleRect.origin.y,
 							cornerRadius);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-pointerSize, targetPoint.y+pointerSize);
+        //YK: modified for variable pointer height
+		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-pointerSize, targetPoint.y+pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-12, targetPoint.y+pointerSize);
 	}
 	else {
 		CGPathMoveToPoint(bubblePath, NULL, targetPoint.x+sidePadding, targetPoint.y);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-pointerSize, targetPoint.y-pointerSize);
-		
+        //YK: modified for variable pointer height
+		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-pointerSize, targetPoint.y-pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-12, targetPoint.y-pointerSize);
+
 		CGPathAddArcToPoint(bubblePath, NULL,
 							bubbleRect.origin.x, bubbleRect.origin.y+bubbleRect.size.height,
 							bubbleRect.origin.x, bubbleRect.origin.y+bubbleRect.size.height-cornerRadius,
@@ -140,7 +145,9 @@
 							bubbleRect.origin.x+bubbleRect.size.width, bubbleRect.origin.y+bubbleRect.size.height,
 							bubbleRect.origin.x+bubbleRect.size.width-cornerRadius, bubbleRect.origin.y+bubbleRect.size.height,
 							cornerRadius);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+pointerSize, targetPoint.y-pointerSize);
+        //YK: modified for variable pointer height
+		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+pointerSize, targetPoint.y-pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+12, targetPoint.y-pointerSize);
 	}
     
 	CGPathCloseSubpath(bubblePath);

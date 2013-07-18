@@ -119,7 +119,7 @@ typedef enum {
     BOOL                    hasShadow;
     CMPopTipAnimation       animation;
 
-	@private
+	//@private
 	CGSize					bubbleSize;
 	CGFloat					cornerRadius;
 	BOOL					highlight;
