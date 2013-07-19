@@ -26,6 +26,7 @@
 #import "CMPopTipView.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @interface CMPopTipView ()
 @property (nonatomic, retain, readwrite)	id	targetObject;
 @property (nonatomic, retain) NSTimer *autoDismissTimer;
@@ -102,7 +103,8 @@
 		CGPathMoveToPoint(bubblePath, NULL, targetPoint.x+sidePadding, targetPoint.y);
         //YK: modified for variable pointer height
 		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+pointerSize, targetPoint.y+pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+12, targetPoint.y+pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+6, targetPoint.y+6);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+6, targetPoint.y+pointerSize);
 		CGPathAddArcToPoint(bubblePath, NULL,
 							bubbleRect.origin.x+bubbleRect.size.width, bubbleRect.origin.y,
 							bubbleRect.origin.x+bubbleRect.size.width, bubbleRect.origin.y+cornerRadius,
@@ -121,13 +123,15 @@
 							cornerRadius);
         //YK: modified for variable pointer height
 		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-pointerSize, targetPoint.y+pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-12, targetPoint.y+pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-6, targetPoint.y+pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-6, targetPoint.y+6);
 	}
 	else {
 		CGPathMoveToPoint(bubblePath, NULL, targetPoint.x+sidePadding, targetPoint.y);
         //YK: modified for variable pointer height
 		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-pointerSize, targetPoint.y-pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-12, targetPoint.y-pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-6, targetPoint.y-6);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-6, targetPoint.y-pointerSize);
 
 		CGPathAddArcToPoint(bubblePath, NULL,
 							bubbleRect.origin.x, bubbleRect.origin.y+bubbleRect.size.height,
@@ -147,7 +151,8 @@
 							cornerRadius);
         //YK: modified for variable pointer height
 		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+pointerSize, targetPoint.y-pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+12, targetPoint.y-pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+6, targetPoint.y-pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+6, targetPoint.y-6);
 	}
     
 	CGPathCloseSubpath(bubblePath);
