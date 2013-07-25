@@ -103,8 +103,8 @@
 		CGPathMoveToPoint(bubblePath, NULL, targetPoint.x+sidePadding, targetPoint.y);
         //YK: modified for variable pointer height
 		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+pointerSize, targetPoint.y+pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+6, targetPoint.y+6);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+6, targetPoint.y+pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+4, targetPoint.y+4);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+4, targetPoint.y+pointerSize);
 		CGPathAddArcToPoint(bubblePath, NULL,
 							bubbleRect.origin.x+bubbleRect.size.width, bubbleRect.origin.y,
 							bubbleRect.origin.x+bubbleRect.size.width, bubbleRect.origin.y+cornerRadius,
@@ -123,15 +123,15 @@
 							cornerRadius);
         //YK: modified for variable pointer height
 		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-pointerSize, targetPoint.y+pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-6, targetPoint.y+pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-6, targetPoint.y+6);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-4, targetPoint.y+pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-4, targetPoint.y+4);
 	}
 	else {
 		CGPathMoveToPoint(bubblePath, NULL, targetPoint.x+sidePadding, targetPoint.y);
         //YK: modified for variable pointer height
 		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-pointerSize, targetPoint.y-pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-6, targetPoint.y-6);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-6, targetPoint.y-pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-4, targetPoint.y-4);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding-4, targetPoint.y-pointerSize);
 
 		CGPathAddArcToPoint(bubblePath, NULL,
 							bubbleRect.origin.x, bubbleRect.origin.y+bubbleRect.size.height,
@@ -151,8 +151,8 @@
 							cornerRadius);
         //YK: modified for variable pointer height
 		//CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+pointerSize, targetPoint.y-pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+6, targetPoint.y-pointerSize);
-		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+6, targetPoint.y-6);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+4, targetPoint.y-pointerSize);
+		CGPathAddLineToPoint(bubblePath, NULL, targetPoint.x+sidePadding+4, targetPoint.y-4);
 	}
     
 	CGPathCloseSubpath(bubblePath);
@@ -167,8 +167,10 @@
 	
 	CGGradientRef myGradient;
 	CGColorSpaceRef myColorSpace;
-	size_t locationCount = 5;
-	CGFloat locationList[] = {0.0, bubbleMiddle-0.03, bubbleMiddle, bubbleMiddle+0.03, 1.0};
+	//size_t locationCount = 5;
+	//CGFloat locationList[] = {0.0, bubbleMiddle-0.03, bubbleMiddle, bubbleMiddle+0.03, 1.0};
+	size_t locationCount = 2;
+    CGFloat locationList[] = {0.0, 1.0};
     
 	CGFloat colourHL = 0.0;
 	if (highlight) {
@@ -195,11 +197,13 @@
 	}
 	CGFloat colorList[] = {
 		//red, green, blue, alpha 
-		red*1.16+colourHL, green*1.16+colourHL, blue*1.16+colourHL, alpha,
-		red*1.16+colourHL, green*1.16+colourHL, blue*1.16+colourHL, alpha,
-		red*1.08+colourHL, green*1.08+colourHL, blue*1.08+colourHL, alpha,
-		red     +colourHL, green     +colourHL, blue     +colourHL, alpha,
-		red     +colourHL, green     +colourHL, blue     +colourHL, alpha
+		//red*1.16+colourHL, green*1.16+colourHL, blue*1.16+colourHL, alpha,
+		//red*1.16+colourHL, green*1.16+colourHL, blue*1.16+colourHL, alpha,
+		//red*1.08+colourHL, green*1.08+colourHL, blue*1.08+colourHL, alpha,
+		//red     +colourHL, green     +colourHL, blue     +colourHL, alpha,
+		//red     +colourHL, green     +colourHL, blue     +colourHL, alpha
+        229.0/255.0,    178.0/255.0,    84.0/255.0, 0.8,
+        175.0/255.0,    91.0/255.0,     33.0/255.0, 0.8
 	};
 	myColorSpace = CGColorSpaceCreateDeviceRGB();
 	myGradient = CGGradientCreateWithColorComponents(myColorSpace, colorList, locationList, locationCount);
@@ -412,6 +416,7 @@
 	CGPoint p = [targetView.superview convertPoint:targetView.center toView:containerView];
 	CGFloat x_p = p.x;
 	CGFloat x_b = x_p - roundf(bubbleSize.width/2);
+    /*
 	if (x_b < sidePadding) {
 		x_b = sidePadding;
 	}
@@ -424,6 +429,7 @@
 	if (x_p + pointerSize > x_b + bubbleSize.width - cornerRadius) {
 		x_p = x_b + bubbleSize.width - cornerRadius - pointerSize;
 	}
+     */
 	
 	CGFloat fullHeight = bubbleSize.height + pointerSize + 10.0;
 	CGFloat y_b;
